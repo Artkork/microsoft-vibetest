@@ -107,6 +107,13 @@ export default function App() {
         </div>
       </header>
 
+      <section className="hero">
+        <div className="hero-overlay">
+          <h2 className="hero-title">Your Sky, Your Business</h2>
+          <p className="hero-subtitle">Professional drone &amp; aerial equipment — managed in one place</p>
+        </div>
+      </section>
+
       <main className="main">
         {error && <div className="error-banner">⚠️ {error}</div>}
 
