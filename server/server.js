@@ -22,6 +22,13 @@ app.get('/api/products', (req, res) => {
   res.json(products);
 });
 
+// GET product by exact SKU (barcode lookup)
+app.get('/api/products/barcode/:sku', (req, res) => {
+  const product = db.prepare('SELECT * FROM products WHERE sku = ?').get(req.params.sku);
+  if (!product) return res.status(404).json({ error: 'Product not found' });
+  res.json(product);
+});
+
 // GET single product
 app.get('/api/products/:id', (req, res) => {
   const product = db.prepare('SELECT * FROM products WHERE id = ?').get(req.params.id);
