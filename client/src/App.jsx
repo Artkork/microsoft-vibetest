@@ -88,10 +88,10 @@ export default function App() {
       <header className="header">
         <div className="header-inner">
           <div className="header-brand">
-            <span className="header-icon">📦</span>
+            <span className="header-icon">🚁</span>
             <div>
-              <h1>Inventory Manager</h1>
-              <p>Track and manage your products</p>
+              <h1>SkyStore Inventory</h1>
+              <p>Drone &amp; aerial equipment management</p>
             </div>
           </div>
           <div className="header-stats">

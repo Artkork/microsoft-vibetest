@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-const CATEGORIES = ['Electronics', 'Clothing', 'Food', 'Sports', 'Home & Garden', 'Other']
+const CATEGORIES = ['Consumer Drones', 'Professional Drones', 'FPV & Racing', 'Controllers', 'Batteries', 'Accessories', 'Parts & Components', 'Other']
 
-const EMPTY = { name: '', category: 'Electronics', sku: '', price: '', quantity: '', description: '' }
+const EMPTY = { name: '', category: 'Consumer Drones', sku: '', price: '', quantity: '', description: '' }
 
 export default function AddProductModal({ onClose, onAdd }) {
   const [form, setForm] = useState(EMPTY)
@@ -84,7 +84,7 @@ export default function AddProductModal({ onClose, onAdd }) {
               <input
                 id="psku"
                 type="text"
-                placeholder="e.g. ELEC-WKB-021"
+                placeholder="e.g. CON-DJI-001"
                 value={form.sku}
                 onChange={e => set('sku', e.target.value)}
                 className={errors.sku ? 'error' : ''}

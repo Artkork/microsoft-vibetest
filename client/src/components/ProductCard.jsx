@@ -1,9 +1,11 @@
 const CATEGORY_BADGE = {
-  'Electronics': 'badge-electronics',
-  'Clothing': 'badge-clothing',
-  'Food': 'badge-food',
-  'Sports': 'badge-sports',
-  'Home & Garden': 'badge-home',
+  'Consumer Drones':    'badge-consumer',
+  'Professional Drones':'badge-professional',
+  'FPV & Racing':       'badge-fpv',
+  'Controllers':        'badge-controllers',
+  'Batteries':          'badge-batteries',
+  'Accessories':        'badge-accessories',
+  'Parts & Components': 'badge-parts',
 }
 
 function qtyClass(qty) {
