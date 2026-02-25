@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import ProductList from './components/ProductList'
 import AddProductModal from './components/AddProductModal'
+import BarcodeModal from './components/BarcodeModal'
 
 export default function App() {
   const [products, setProducts] = useState([])
@@ -8,6 +9,7 @@ export default function App() {
   const [error, setError] = useState(null)
   const [search, setSearch] = useState('')
   const [showModal, setShowModal] = useState(false)
+  const [showBarcodeModal, setShowBarcodeModal] = useState(false)
 
   const fetchProducts = useCallback(async (q = '') => {
     try {
@@ -121,6 +123,9 @@ export default function App() {
               onChange={e => setSearch(e.target.value)}
             />
           </div>
+          <button className="btn-barcode" onClick={() => setShowBarcodeModal(true)}>
+            <span>📦</span> Scan Barcode
+          </button>
           <button className="btn-add" onClick={() => setShowModal(true)}>
             <span>＋</span> Add Product
           </button>
@@ -144,6 +149,13 @@ export default function App() {
           />
         )}
       </main>
+
+      {showBarcodeModal && (
+        <BarcodeModal
+          onClose={() => setShowBarcodeModal(false)}
+          onQuantityChange={handleQuantityChange}
+        />
+      )}
 
       {showModal && (
         <AddProductModal
