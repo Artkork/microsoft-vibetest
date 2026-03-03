@@ -84,6 +84,23 @@ app.delete('/api/products/:id', (req, res) => {
   res.json({ message: 'Product deleted', id: parseInt(req.params.id) });
 });
 
+// POST message to admin
+app.post('/api/messages', (req, res) => {
+  const { name, email, message } = req.body;
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'Missing required fields: name, email, message' });
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return res.status(400).json({ error: 'Invalid email address' });
+  }
+  const safeName = String(name).replace(/[\r\n]/g, ' ');
+  const safeEmail = String(email).replace(/[\r\n]/g, ' ');
+  const safeMessage = String(message).replace(/[\r\n]/g, ' ');
+  const timestamp = new Date().toISOString();
+  console.log(`[Admin Message] ${timestamp} | From: ${safeName} <${safeEmail}> | Message: ${safeMessage}`);
+  res.status(201).json({ success: true, message: 'Your message has been sent to the administrator.' });
+});
+
 app.listen(PORT, () => {
   console.log(`Inventory server running on http://localhost:${PORT}`);
 });
