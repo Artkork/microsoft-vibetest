@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import ProductList from './components/ProductList'
 import AddProductModal from './components/AddProductModal'
 import BarcodeModal from './components/BarcodeModal'
+import ContactAdminModal from './components/ContactAdminModal'
 
 export default function App() {
   const [products, setProducts] = useState([])
@@ -10,6 +11,7 @@ export default function App() {
   const [search, setSearch] = useState('')
   const [showModal, setShowModal] = useState(false)
   const [showBarcodeModal, setShowBarcodeModal] = useState(false)
+  const [showContactModal, setShowContactModal] = useState(false)
 
   const fetchProducts = useCallback(async (q = '') => {
     try {
@@ -133,6 +135,9 @@ export default function App() {
           <button className="btn-barcode" onClick={() => setShowBarcodeModal(true)}>
             <span>📦</span> Scan Barcode
           </button>
+          <button className="btn-contact" onClick={() => setShowContactModal(true)}>
+            <span>✉️</span> Ota yhteyttä
+          </button>
           <button className="btn-add" onClick={() => setShowModal(true)}>
             <span>＋</span> Add Product
           </button>
@@ -161,6 +166,12 @@ export default function App() {
         <BarcodeModal
           onClose={() => setShowBarcodeModal(false)}
           onQuantityChange={handleQuantityChange}
+        />
+      )}
+
+      {showContactModal && (
+        <ContactAdminModal
+          onClose={() => setShowContactModal(false)}
         />
       )}
 
